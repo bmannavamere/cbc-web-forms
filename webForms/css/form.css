@@ -1,0 +1,118 @@
+/* https://stackoverflow.com/questions/25070144/bootstrap-modal-removes-scroll-bar/47807685#47807685 */
+.modal {
+ z-index: 9900 !important;
+}
+.modal-backdrop {
+  z-index: 9801 !important;
+}
+
+.modal-header {
+  background-color: #F2F2F2;
+  color: #3C3C3C;
+  border-bottom: none;
+  margin-top:-1rem !important;
+}
+.contact-modal-body {
+  height: 100%;
+  background-color: #F2F2F2;
+}
+/* x */
+.contact-modal-body span {
+  padding-right: 10px;
+}
+.contactUsX {
+  font-size: 45px;
+}
+input, select {
+  height:1.1rem !important;
+  border:0 !important;
+  border-bottom: 1px solid #3C3C3C !important;
+  border-radius: 0 !important;
+  background-color: #F2F2F2 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color:black;
+}
+
+
+@media (max-width: 991px) {
+  .respFormImage {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  input, select {
+    height:2.5rem !important;
+    color:black !important;
+  }
+}
+
+#form {
+  font-family: 'Montserrat', sans-serif;
+}
+.inputName {
+  color: #fff;
+  font-weight: bold;
+}
+.valid-feedback, .invalid-feedback {
+  border-radius: 3px;
+  padding-left: 12px;
+  font-weight: bold;
+}
+.invalid-feedback {}
+.inputLabel {
+  color: #3C3C3C;
+  font-weight: 500;
+  font-size: 16px !important;
+}
+.btn-light {
+  background-color: #0e354a !important;
+  color:white;
+  padding: 10px;
+  width: 100%;
+  height:3.3rem;
+}
+.btn-light:hover {
+  color:#D66B00;
+}
+/* date time picker icons */
+.local-fa-chevron-right {
+  background-image: url('../img/chevron-right-solid.svg');
+  background-repeat: no-repeat;
+}
+.local-fa-chevron-left {
+  background-image: url('../img/chevron-left-solid.svg');
+  background-repeat: no-repeat;
+}
+.local-fa-chevron-up {
+  background-image: url('../img/chevron-up-solid.svg');
+  background-repeat: no-repeat;
+  width: 20px !important;
+  height: 20px !important;
+}
+.local-fa-chevron-down {
+  background-image: url('../img/chevron-down-solid.svg');
+  background-repeat: no-repeat;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Resize the google reCAPTCHA */
+.g-recaptcha {
+  transform:scale(0.81);
+  -webkit-transform:scale(0.81);
+  transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+}
+@media screen and (max-width: 510px) {
+  .g-recaptcha {
+    transform:scale(0.77);
+    -webkit-transform:scale(0.77);
+    transform-origin:center;
+    -webkit-transform-origin:0 0;
+    /* center the captcha */
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

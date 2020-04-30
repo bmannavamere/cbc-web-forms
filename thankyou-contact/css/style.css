@@ -1,0 +1,381 @@
+@font-face {
+    font-family: todaysbop-regular;
+    font-display: swap;
+    src: url(../font/TodaySBOP-Regular.otf);
+}
+@font-face {
+    font-family: todaysbop-light;
+    font-display: swap;
+    src: url(../font/TodaySBOP-LightSC.otf);
+}
+/*
+*** GLOBAL *********************************************************************
+*/
+/* Reset to fix that pesky white space on right
+  in mobile Chrome Browser */
+html,body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+/* Hide Horizontal scrollbar */
+/* Mobile White Space Band-aid */
+.hideWhiteSpace {
+  overflow-x: hidden;
+}
+.hideVerticalIeScrollbar {
+  overflow-y: hidden;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+h1 {
+  margin: 15px;
+  margin-left: 0px;
+  color: #fff;
+  font-weight: 700;
+}
+h2 {
+  margin: 15px;
+  margin-left: 0px;
+  color: #fff;
+  font-weight: 400;
+}
+h3 {
+  color: #fff;
+}
+#content h3 {
+  color: #777;
+}
+/* p {
+  color: #fff;
+} */
+a:hover {
+  text-decoration: none;
+}
+/* BUTTONS */
+.btn-light {
+  color: #009cdc !important;
+  border-color: #fff;
+}
+.btn-md:active {
+  background-color: #009cdc!important;
+}
+.btn-outline-primary {
+  border: #009cdc;
+}
+.btn-outline-primary:hover {
+  background-color: #009cdc;
+  border-color: #009cdc;
+  /* color: #002856; */
+  color: #fff;
+}
+/* Use for adding top margin to rows */
+.topBuffer {
+  /* margin-top: 35px; */
+  padding-top: 45px;
+}
+@media(max-width: 772px) {
+  .topBuffer {
+    padding-top: 30px;
+  }
+}
+.bottomBuffer {
+  padding-bottom: 80px;
+}
+@media(max-width: 772px){
+  .bottomBuffer {
+    padding-bottom: 35px;
+  }
+}
+/* For visualizing rows and cols */
+.addBorderToMe {
+  border: 1px solid black;
+}
+.addWhiteBorderToMe {
+  border: 1px solid white;
+}
+.addBlackBorderToMe {
+  border: 1px solid black;
+}
+/* To make font in element white */
+.whiteText {
+  color: #fff;
+}
+.miniSpacer {
+  height: 15px;
+  width: 1px;
+}
+/* Text Classes */
+.sbopReg {
+  font-family: todaysbop-regular;
+}
+.sbopLight {
+  font-family: todaysbop-light;
+}
+.locationText {
+  font-family: todaysbop-regular;
+  color: #000;
+  word-spacing: 3px;
+  letter-spacing: 3px;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+*** Page Styles ****************************************************************
+*/
+.headerImg {
+  background-image: url("../img/thank-you-header.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 33.5rem;
+}
+@media(max-width: 1800px){
+  .headerImg {
+    height: 30rem;
+  }
+}
+@media(max-width: 1000px){
+  .headerImg {
+    height: 25rem;
+  }
+}
+.addTextShadow {
+  text-shadow:
+  -0.5px -0.5px 0 #777,
+  0.5px -0.5px 0 #777,
+  -0.5px 0.5px 0 #777,
+  0.5px 0.5px 0 #777;
+}
+.thankYouText {
+  color: #fff;
+  font-size: 55px;
+  font-weight: 500;
+  margin-top: 66px;
+}
+.yourSubText {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+}
+@media(max-width: 767px){
+  .headerImg {
+    height: 20rem;
+  }
+  .thankYouText {
+    font-size: 48px;
+  }
+  .yourSubText {
+    font-size: 18px;
+  }
+}
+@media(max-width: 555px){
+  .thankYouText {
+    font-size: 36px;
+  }
+  .yourSubText {
+    font-size: 16px;
+  }
+}
+/* body text p's */
+.pageText p, .amazing p  {
+  color: #777;
+  font-size: 22px;
+}
+
+
+.testBorder {
+  border:1px solid black;
+}
+
+/* For Edge - hide li bullets */
+li {
+  list-style: none;
+}
+/* hide if not ie */
+.ieAvaLogo {
+  display: none;
+}
+/* IE10+ CSS here */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .navbar {
+      /* needs width to act right */
+      width: 600px;
+    }
+    .navimg {
+      /* hide large logo img for ie */
+      display: none;
+    }
+    .ieAvaLogo {
+      /* show just the A logo in nav for ie */
+      display: block;
+    }
+    .navbar.navbar-default {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+}
+
+
+
+
+
+
+
+/*
+*** Footer *********************************************************************
+*/
+.avamereFooter {
+  background-color: #3A3C3E;
+  min-height: 300px;
+  font-size: 16px;
+  padding-bottom: 50px;
+}
+.footerLogoAddress p {
+  color: #fff;
+  margin-bottom: 0px;
+}
+/* get footer content aligned better */
+@media(min-width: 772px) {
+  .footerLogoAddress {
+    padding-left: 0px;
+  }
+}
+/* @768 and below center footer
+   Logo and address - also the mx-auto
+   class does the rest */
+@media(max-width: 768px){
+    .footerLogoAddress {
+      text-align: center;
+    }
+    .footerLogoBox {
+      max-width:800px;
+    }
+}
+.footerLogoBox img {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.footerContactBtn button {
+  width: 190px;
+  margin-top: 15px;
+}
+/* Below 767px center
+  footer contact btn better */
+@media(max-width: 768px) {
+  .footerContactBtn {
+    margin-left: -7px;
+  }
+}
+.footerAddressText {
+  float: left;
+  clear: left;
+  margin-top: 15px;
+}
+.footerLinks a {
+  color: #009cdc;
+}
+.footerLinks a:hover {
+  color: #fff;
+}
+/* text center links below 768px */
+@media(max-width: 768px) {
+  .footerLinks {
+    text-align: center !important;
+  }
+}
+.footerLink a:hover {
+  display: none;
+}
+/* @768 and below center footer links */
+@media(max-width: 768px){
+    .footerLinks {
+        text-align: center;
+    }
+}
+.avamereFooter .footerLinks p {
+  color: #009cdc;
+}
+.footer-button {
+  width: 250px;
+  height: 43px;
+}
+a.footer-button {
+  padding: 10px 14px 14px;
+}
+.footer-button:hover {
+  color: #fff;
+  background-color: #777 !important;
+}
+/* Social Media Links */
+.socialMediaLinks a {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  margin: 0 3px 0 0;
+  color: #fff;
+  background: #afafaf;
+  padding: 10px;
+  border-radius: 50%;
+  /* to give the back to top button
+    more room on mobile */
+  margin-bottom: 15px;
+}
+.socialMediaLinks a.fa-facebook-f:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #3B5998;
+}
+.socialMediaLinks a.fa-instagram:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #fb3958;
+}
+.socialMediaLinks a.fa-twitter:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #1DA1F2;
+}
+.socialMediaLinks a.fa-google-plus-g:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #DB4437;
+}
+.socialMediaLinks a.fa-youtube:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #FF0000;
+}
+.socialMediaLinks a.fa-linkedin-in:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #0077B5;
+}
+.socialMediaLinks a.fa-apple:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #009DDC;
+}
+.socialMediaLinks a.fa-android:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #A4C639;
+}
