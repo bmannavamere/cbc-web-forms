@@ -360,7 +360,9 @@
             $message .= "<tr><td><strong>Last Name:</strong> </td><td>" . $lastName . "</td></tr>";
             $message .= "<tr><td><strong>Email:</strong> </td><td>" . $email . "</td></tr>";
             $message .= "<tr><td><strong>Phone:</strong> </td><td>" . $phone . "</td></tr>";
-            $message .= "<tr><td><strong>Preferred contact<br> method:</strong> </td><td>" . $method . "</td></tr>";
+            // $message .= "<tr><td><strong>Preferred contact<br> method:</strong> </td><td>" . $method . "</td></tr>";
+            // For the new 'virtual tour' dropdown
+            $message .= "<tr><td><strong>Virtual tour<br> method:</strong> </td><td>" . $method . "</td></tr>";
             $message .= "<tr><td><strong>Date of Tour:</strong> </td><td>" . $date . "</td></tr>";
             $message .= "<tr><td><strong>Time of Tour:</strong> </td><td>" . $time . "</td></tr>";
             $message .= "<tr><td><strong>Comments:</strong> </td><td>" . $text . "</td></tr>";
@@ -474,7 +476,7 @@
       }
 
       // send tour confirmation email to end user !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      function sendTourConfEmail($from, $replyToEmail, $firstName, $lastName, $email, $phone, $date, $time, $text, $firstSub, $page, $commname, $address, $commphone) {
+      function sendTourConfEmail($from, $replyToEmail, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $firstSub, $page, $commname, $address, $commphone) {
         $host = "ssl://smtp.gmail.com";
         $username = "avamereforms@gmail.com";
         $password = "rrhssmpguubdxpsg"; // special app password
@@ -515,6 +517,8 @@
               $confMessage .= "<tr><td><strong>Last Name:</strong> </td><td>" . $lastName . "</td></tr>";
               // $confMessage .= "<tr><td><strong>Email:</strong> </td><td>" . $email . "</td></tr>";
               // $confMessage .= "<tr><td><strong>Phone:</strong> </td><td>" . $phone . "</td></tr>";
+              // New row for the virutal tour method
+              $confMessage .= "<tr><td><strong>Virtual Tour method:</strong> </td><td>" . $method . "</td></tr>";
               $confMessage .= "<tr><td><strong>Date of Tour:</strong> </td><td>" . $date . "</td></tr>";
               $confMessage .= "<tr><td><strong>Time of Tour:</strong> </td><td>" . $time . "</td></tr>";
               $confMessage .= "<tr><td><strong>Comments:</strong> </td><td>" . $text . "</td></tr>";
@@ -578,7 +582,7 @@
       list($recipients, $commname, $address, $commphone) = getRecipientsFromDb($page);
 
       // Call the functions
-      sendTourConfEmail($from, $replyToEmail, $firstName, $lastName, $email, $phone, $date, $time, $text, $firstSub, $page, $commname, $address, $commphone);
+      sendTourConfEmail($from, $replyToEmail, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $firstSub, $page, $commname, $address, $commphone);
       sendTourToDb($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $submission_num);
       // note: sendEmail() needs to be last function called because of redirect
       sendEmail($recipients, $subject, $message, $from, $replyToEmail);
