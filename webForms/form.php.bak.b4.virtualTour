@@ -33,9 +33,9 @@
            Leave us your contact info, and we’ll be in touch.
          </p>
 
-         <h2 class="modal-title tourModalTitle darkGray">Schedule a Virtual Tour of Our Community</h2>
+         <h2 class="modal-title tourModalTitle darkGray">Schedule a Visit at Our Community</h2>
          <p class="mb-4 mt-2 tourModalTitle">
-           Thank you for your interest in <?php echo $facilityName; ?>. We can’t wait to meet you!
+           Thank you for your interest in visiting us. Whether you’re ready for a full tour or an introductory appointment, we can’t wait to meet you!
          </p>
 
          <!-- The form's action is set with jQuery, based upon if contact or tour btn clicked -->
@@ -97,31 +97,15 @@
 
              <!-- PREFERRED CONTACT METHOD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
              <div class="col-md-6 mb-2">
-               <label class="inputLabel methodInputLabel" for="reason"></label>
+               <label class="inputLabel" for="reason">Preferred contact method:</label>
              </div>
              <div class="col-md-6 mb-2">
-
-               <!-- This select is for the tour form -->
-               <span class="virtTourSelect">
-                 <select id="" class="form-control chosen-select" name="" required>
-                   <option value="Facetime">Facetime</option>
-                   <option value="Zoom">Zoom</option>
-                   <option value="Skype">Skype</option>
-                   <option value="Microsoft Team">Google Duo</option>
-                   <option value="Microsoft Team">Microsoft Team</option>
-                 </select>
-               </span>
-
-               <!-- This select is for the contact form -->
-               <span class="contactSelect">
-                 <select id="" class="form-control chosen-select" name="" required>
-                   <!-- <option value="" selected disabled hidden></option> -->
-                   <option value="Phone" selected>Phone</option>
-                   <option value="Email">Email</option>
-                   <option value="In person">In person</option>
-                 </select>
-               </span>
-
+               <select id="" class="form-control chosen-select" name="method" required>
+                 <!-- <option value="" selected disabled hidden></option> -->
+                 <option value="Phone" selected>Phone</option>
+                 <option value="Email">Email</option>
+                 <option value="In person">In person</option>
+               </select>
              </div>
 
 

@@ -124,6 +124,21 @@
         // $("#contactReason").val('Request information');
 
 
+        // Change the contact method input label
+        $('.methodInputLabel').html('Preferred tour method:');
+        // Show the virtual tour select and hide the contact method select
+        $('.contactSelect').css('display','none');
+        $('.virtTourSelect').css('display','block');
+        // Set the name of the select to 'method' so that only this one will
+        // be posted to the thank you page.
+        $('.virtTourSelect select').attr('name', 'method');
+        // Set the contact select method to blank in case it was alread opened.
+        $('.contactSelect select').attr('name', '');
+        // Make the contact select not required
+        document.querySelector('.contactSelect select').required = false;
+
+
+
         // Show date and time inputs
         $(".dateCol").show();
         $(".timeCol").show();
@@ -245,6 +260,19 @@
           $('#contactMessage').val("");
         }
         clearFields();
+
+
+        // Change the contact method input label
+        $('.methodInputLabel').html('Preferred contact method:');
+        // Hide the virtual tour select and show the contact method select
+        $('.virtTourSelect').css('display','none');
+        $('.contactSelect').css('display','block');
+        // Set the name of the select to 'method'
+        $('.contactSelect select').attr('name', 'method');
+        // Set the tour select method to blank in case it was alread opened.
+        $('.virtTourSelect select').attr('name', '');
+
+
 
 
         // Make date/time inputs not required for contact form.
