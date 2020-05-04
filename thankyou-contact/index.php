@@ -63,6 +63,17 @@
       $cookie_value = rawurlencode(json_encode($cookieArr));
       setcookie($cookie_name, $cookie_value,time()+31556926, "/");
 
+
+      // Get the users ip
+      if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+         $user_ip = $_SERVER['HTTP_CLIENT_IP'];
+      } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+         $user_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+      } else {
+         $user_ip = $_SERVER['REMOTE_ADDR'];
+      }
+
+
 // NOTE: AFTER the cookies are set then send the page to the browser.
 ?>
 
@@ -354,7 +365,7 @@
 
 
       // SEND CONTACT INFO TO DB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      function sendContactToDB($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $reason, $method, $text) {
+      function sendContactToDB($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $reason, $method, $text, $user_ip) {
 
         // // THE PROD DB
         // // avamere.com IP 104.207.253.26 (HERE) should be allowed from cpanel
@@ -385,8 +396,8 @@
             //                         time_stamp = :time_stamp, name = :name, email = :email, phone = :phone, reason = :reason, method = :method,
             //                         message = :message, submission_num = submission_num+1");
             // I just realized - should not be updating users contact us submission - add new record to db instead
-            $stmt = $conn->prepare("INSERT INTO contact_form (user_id, time_stamp, page, recipients, firstName, lastName, email, phone, reason, method, message)
-                                    VALUES (:user_id, :time_stamp, :page, :recipients, :firstName, :lastName, :email, :phone, :reason, :method, :message)");
+            $stmt = $conn->prepare("INSERT INTO contact_form (user_id, time_stamp, page, recipients, firstName, lastName, email, phone, reason, method, message, user_ip)
+                                    VALUES (:user_id, :time_stamp, :page, :recipients, :firstName, :lastName, :email, :phone, :reason, :method, :message, :user_ip)");
                                     // ON DUPLICATE KEY UPDATE
                                     // time_stamp = :time_stamp, name = :name, email = :email, phone = :phone, reason = :reason, method = :method,
                                     // message = :message, submission_num = submission_num+1");
@@ -401,6 +412,7 @@
             $stmt->bindParam(':reason', $reason);
             $stmt->bindParam(':method', $method);
             $stmt->bindParam(':message', $text);
+            $stmt->bindParam(':user_ip', $user_ip);
             // $stmt->bindParam(':submission_num', $submission_num);
             $stmt->execute();
             // echo "New record created successfully. BAM <br><hr>";
@@ -589,7 +601,7 @@
       } else {
         sendContactConfEmail($from, $replyToEmail, $firstName, $lastName, $email, $phone, $text, $firstSub, $commname, $address, $commphone);
       }
-      sendContactToDB($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $reason, $method, $text);
+      sendContactToDB($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $reason, $method, $text, $user_ip);
       sendContactEmail($recipients, $subject, $message, $from, $replyToEmail);
 
       // Run code to send 'lead' to Sherpa's API

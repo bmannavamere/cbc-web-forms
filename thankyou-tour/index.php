@@ -83,6 +83,16 @@
       setcookie($cookie_message_name, $cookie_message_value, $tour_timestamp, "/");
 
 
+      // Get the users ip
+      if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+         $user_ip = $_SERVER['HTTP_CLIENT_IP'];
+      } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+         $user_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+      } else {
+         $user_ip = $_SERVER['REMOTE_ADDR'];
+      }
+
+
 // NOTE: Cookies have to be set before output sent to the browser, thus this code
 // is interrupted here to then send the page to the browser, before having
 // completed the rest of the code. This speeds things up drastically from the users
@@ -380,7 +390,7 @@
 
 
       // send tour form info to DB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      function sendTourToDb($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $submission_num) {
+      function sendTourToDb($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $submission_num, $user_ip) {
 
         // // THE PROD DB
         // // avamere.com server IP 104.207.253.26 (HERE) should be allowed from cpanel
@@ -415,8 +425,8 @@
             // date_of_tour = "October 29, 2020", time_of_tour = "5:00 PM";
 
             // v2: to allow for updating of user info
-            $stmt = $conn->prepare("INSERT INTO tour_form (user_id, time_stamp, page, recipients, firstName, lastName, email, phone, method, date_of_tour, time_of_tour, comments, submission_num)
-                                    VALUES (:user_id, :time_stamp, :page, :recipients, :firstName, :lastName, :email, :phone, :method, :date_of_tour, :time_of_tour, :comments, :submission_num)
+            $stmt = $conn->prepare("INSERT INTO tour_form (user_id, time_stamp, page, recipients, firstName, lastName, email, phone, method, date_of_tour, time_of_tour, comments, submission_num, user_ip)
+                                    VALUES (:user_id, :time_stamp, :page, :recipients, :firstName, :lastName, :email, :phone, :method, :date_of_tour, :time_of_tour, :comments, :submission_num, :user_ip)
                                     ON DUPLICATE KEY UPDATE
                                     time_stamp = :time_stamp, firstName = :firstName, lastName = :lastName, email = :email, phone = :phone, method = :method, date_of_tour = :date_of_tour,
                                     time_of_tour = :time_of_tour, comments = :comments, submission_num = submission_num+1");
@@ -435,6 +445,7 @@
             $stmt->bindParam(':time_of_tour', $time);
             $stmt->bindParam(':comments', $text);
             $stmt->bindParam(':submission_num', $submission_num);
+            $stmt->bindParam(':user_ip', $user_ip);
             $stmt->execute();
             // echo "New record created successfully. BAM <br><hr>";
 
@@ -583,7 +594,7 @@
 
       // Call the functions
       sendTourConfEmail($from, $replyToEmail, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $firstSub, $page, $commname, $address, $commphone);
-      sendTourToDb($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $submission_num);
+      sendTourToDb($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $method, $date, $time, $text, $submission_num, $user_ip);
       // note: sendEmail() needs to be last function called because of redirect
       sendEmail($recipients, $subject, $message, $from, $replyToEmail);
 
