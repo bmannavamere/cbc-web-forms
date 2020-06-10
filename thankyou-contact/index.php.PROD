@@ -301,16 +301,16 @@
       function sendContactToDB($userID, $page, $recipients, $firstName, $lastName, $email, $phone, $reason, $method, $text, $user_ip) {
 
         // // THE PROD DB
-        // $servername = "132.148.17.227";
-        // $username = "avamerem_cbc";
-        // $password = "Pj7hVYQA22YS";
-        // $dbname = "avamerem_CBC";
+        $servername = "132.148.17.227";
+        $username = "avamerem_cbc";
+        $password = "Pj7hVYQA22YS";
+        $dbname = "avamerem_CBC";
 
         // THE DEV DB
-        $servername = "132.148.17.227";
-        $username = "avamerem_cbcDevTeam";
-        $password = "[g3iXlPr1@=J";
-        $dbname = "avamerem_CBC_DEV";
+        // $servername = "132.148.17.227";
+        // $username = "avamerem_cbcDevTeam";
+        // $password = "[g3iXlPr1@=J";
+        // $dbname = "avamerem_CBC_DEV";
 
         $timestamp = date('Y-m-d G:i:s'); // prints 2011-08-06 14:54:17
 
@@ -375,9 +375,7 @@
         $password = "rrhssmpguubdxpsg"; // special app password
         $port = "465";
 
-        // MIME == Multipurpose Internet Mail Extensions
         $mimeVersion = "1.0";
-
         $contentType = "text/html; charset=utf-8";
 
         $headersArr = array ('From' => $from, 'To' => $recipients, 'Subject' => $subject2, 'Reply-To' => $replyToEmail, 'MIME-Version' => $mimeVersion, 'Content-Type' => $contentType);
@@ -476,16 +474,16 @@
       function getRecipientsFromDb($page) {
 
         // // THE PROD DB
-        // $servername = "132.148.17.227";
-        // $username = "avamerem_cbc";
-        // $password = "Pj7hVYQA22YS";
-        // $dbname = "avamerem_CBC";
+        $servername = "132.148.17.227";
+        $username = "avamerem_cbc";
+        $password = "Pj7hVYQA22YS";
+        $dbname = "avamerem_CBC";
 
         // THE DEV DB
-        $servername = "132.148.17.227";
-        $username = "avamerem_cbcDevTeam";
-        $password = "[g3iXlPr1@=J";
-        $dbname = "avamerem_CBC_DEV";
+        // $servername = "132.148.17.227";
+        // $username = "avamerem_cbcDevTeam";
+        // $password = "[g3iXlPr1@=J";
+        // $dbname = "avamerem_CBC_DEV";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -531,7 +529,7 @@
       sendContactEmail($recipients, $subject, $commname, $from, $replyToEmail, $page, $firstName, $lastName, $email, $phone, $reason, $method, $text);
 
       // Run code to send 'lead' to Sherpa's API
-      // require_once '../includes/sendLeadToSherpa/sendContactFormLead.php';
+      require_once '../includes/sendLeadToSherpa/sendContactFormLead.php';
 
   }
 

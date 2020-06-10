@@ -350,6 +350,15 @@
         // Add community name to the email subject line
         $subject2 = $commname.' - '.$subject;
 
+        $host = "ssl://smtp.gmail.com";
+        $username = "avamereforms@gmail.com";
+        // $password = "SN8ce9i961Hy"; // normal pw for the gmail account
+        $password = "rrhssmpguubdxpsg"; // special app password
+        $port = "465";
+
+        $mimeVersion = "1.0";
+        $contentType = "text/html; charset=utf-8";
+
         // Create Notification Email !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $message = '<html><body>';
           $message .= '<table align="center" width="600">';
@@ -368,17 +377,6 @@
             $message .= "</table>";
           $message .= "</table>";
         $message .= "</body></html>";
-
-        $host = "ssl://smtp.gmail.com";
-        $username = "avamereforms@gmail.com";
-        // $password = "SN8ce9i961Hy"; // normal pw for the gmail account
-        $password = "rrhssmpguubdxpsg"; // special app password
-        $port = "465";
-
-        // MIME == Multipurpose Internet Mail Extensions
-        $mimeVersion = "1.0";
-
-        $contentType = "text/html; charset=utf-8";
 
         $headersArr = array ('From' => $from, 'To' => $recipients, 'Subject' => $subject2, 'Reply-To' => $replyToEmail, 'MIME-Version' => $mimeVersion, 'Content-Type' => $contentType);
         $smtp       = Mail::factory('smtp', array ('host' => $host, 'port' => $port, 'auth' => true, 'username' => $username, 'password' => $password));
