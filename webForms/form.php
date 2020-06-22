@@ -25,17 +25,17 @@
       <div class="col-xl-6">
        <div class="col-xl-12 mt-2 mx-auto">
 
-         <h2 class="modal-title contactModalTitle darkGray">Let’s get in touch!</h2>
+         <h2 class="modal-title contactModalTitle darkGray">Let's get in touch!</h2>
          <p class="mt-2 contactModalTitle">
-           We’re happy to answer your questions and share how our residents enjoy life at Avamere!
+           We're happy to answer your questions and share how our residents enjoy life at Avamere!
          </p>
          <p class="mb-4 contactModalTitle">
-           Leave us your contact info, and we’ll be in touch.
+           Leave us your contact info, and we'll be in touch.
          </p>
 
          <h2 class="modal-title tourModalTitle darkGray">Schedule a Virtual Tour of Our Community</h2>
          <p class="mb-4 mt-2 tourModalTitle">
-           Thank you for your interest in <?php echo $facilityName; ?>. We can’t wait to meet you!
+           Thank you for your interest in <?php echo $facilityName; ?>. We can't wait to meet you!
          </p>
 
          <!-- The form's action is set with jQuery, based upon if contact or tour btn clicked -->
